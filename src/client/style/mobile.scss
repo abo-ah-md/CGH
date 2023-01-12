@@ -1,0 +1,79 @@
+@import './grid.scss';
+@import './styles.scss';
+
+/*main page*/
+@media (min-width:320px) and (max-width:480px) {
+    .container{
+        grid-template-areas:
+        ". nav nav nav nav ."
+        ". add add add add ."
+        ". img img img img ."
+        ". info info info info .";
+        grid-template-rows: repeat(3,1fr);
+    }
+    .add {
+        p {
+            margin-left: -40px;
+        }
+
+        button {
+            margin-right: -43px;
+        }
+
+        .myTrip {
+            margin-left: -42px;
+            display: block;
+            font-size: 27px;
+        }
+
+        .trip {
+            width: 79%;
+        }
+
+        .depart {
+            font-size: 27px;
+            margin-left: -46px;
+            margin-top: -13px;
+        }
+    }
+    .img{
+        img{
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:900px) {
+
+    .add {
+        .myTrip {
+            margin-left: -20%
+        }
+
+        .trip {
+            width: 39%;
+        }
+
+        .depart {
+            margin-right: -98px;
+            margin-top: 0px;
+        }
+    }
+}
+
+@media(max-width:1024px) and (max-width:1200px) {
+    .add {
+        .myTrip {
+            margin-left: -10%
+        }
+
+        .trip {
+            width: 28%;
+        }
+
+        .depart {
+            margin-right: 50%;
+            margin-top: 3px
+        }
+    }
+}

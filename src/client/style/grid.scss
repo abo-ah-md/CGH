@@ -1,0 +1,20 @@
+.container {
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-template-columns: repeat(6, 1fr); 
+  grid-template-rows: repeat(8, 1fr); 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". nav nav nav nav ."
+    ". add add add add ."
+    ". img img info info ."
+    ". img img info info ."
+    ". img img info info ."
+    ". img img info info ."
+    ". img img info info ."
+    ". img img info info ."; 
+}
+.nav { grid-area: nav; }
+.add { grid-area: add; }
+.img { grid-area: img; }
+.info { grid-area: info; }

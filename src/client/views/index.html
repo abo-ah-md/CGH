@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project</title>
+</head>
+
+<body>
+    <div class="c   ontainer">
+        <!--nav-->
+        <nav class="nav">
+            <h1 class="navH1"><span>t</span>ravel <span>p</span>lanner</h1>
+        </nav>
+        <!--nav-->
+        <!--add section-->
+        <div class="add">
+                <p>
+                    <span>p</span>lan <span>m</span>y <span>t</span>rip
+                    <button id="btn" onclick="Client.getCountyName(),Client.getWeather(),Client.getImg(), Client.Cal()">add trip</button>
+                </p>
+                <div>
+                    <h1 class="myTrip">
+                        <span>m</span>y trip to
+                        <input type="text" placeholder="enter the counrty" class="trip" id="county" name="name">
+                    </h1 >
+                        <h1 class="depart">
+                            <span>d</span>parting
+                            <input type="date" placeholder="date" class="date" id="date">
+                        </h1>
+                </div>
+        </div>
+        <!--add section-->
+        <!--Image section-->
+        <div class="img " id="Image">
+            <img src="../media/burger.png" alt="img" id="img" name="img"/>
+            <button class="lodging" onclick="alert('coming soon')">add lodging</button>
+            
+            <button class="packing" onclick="alert('coming soon')">add packing list</button>
+            
+            <button class="notes" onclick="alert('coming soon')">add notes</button>
+        </div>
+        <!--Image section-->
+        <!--info section-->
+        <div class="info " id="Info">
+                <div class="tripTo">
+                    <span>m</span>y trip to: <span id="name"></span> , <span id="Countyname" name="Cname"></span>
+                </div>
+            <div class="Dparting">
+                <span>d</span>parting  <span id="showDate"></span>  
+            </div>
+            <h2 class="font"><span>f</span>ight info</h2>
+            <p>
+                <span>ord</span> 3:00PM
+                <br />
+                <span>f</span>ight 22 udcity <span>air</span>
+                <br />
+                <span>ord</span> 3:00PM
+                <br />
+                <span>f</span>ight 44 udcity <span>air</span>
+            </p>
+            <p>
+            <div class="conurty" class="font">
+                <span id="counter"></span> days away
+            </div>
+            <h3 class="font"><span>t</span>ypcial weather for then</h3>
+            <p><span>t</span>emperature <p name="temp" id="temp"></p></p>
+            <p><span>f</span>eeling temperature <p name="feelTemp" id="feelTemp"></p></p>
+            <p><span>d</span>escription <p name="description" id="description">.</p></p>
+            </p>
+        </div>
+        <!--info section-->
+    </div>
+   
+</body>
+
+</html>

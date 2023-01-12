@@ -1,0 +1,118 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+/*vars*/
+$fsize: 25px;
+$bold: bold;
+$font-family:Kalam,serif;
+/*Mix*/
+@mixin button ($dir) {
+    float: $dir;
+    padding: 9px;
+    background-color: transparent;
+    border-radius: 25px;
+    font-weight: bold;
+}
+@mixin btnHover {
+    background-color: black;
+    color:white;
+    transition: 0.5s;
+}
+//gineral style
+span{
+    text-transform: capitalize;
+    }  
+.font{
+    font-family:Cardo,serif
+}
+// applyig styles
+body{
+    background-color: aliceblue;
+}
+//navbar
+nav{
+    .navH1{
+        font-family:'Caveat', serif;
+        font-size: 55px;
+    }  
+}
+//navbar
+//add
+.add{
+    p{
+        font-size: 25px;
+    }
+    button{
+        @include button(right)
+    }
+    button:hover{
+        @include btnHover
+    }
+    .myTrip{
+        display: inline;
+        margin-left: 11%;
+        font-family: $font-family;
+    }
+    .depart{
+        float: right;
+        font-family: $font-family;
+        margin-right: 29%;
+        margin-top: 0%;
+    }
+    .trip{
+        background-color: transparent;
+        border: 0px;
+        border-left: 2px red solid;
+        font-size: 25px;
+        color: red;
+        width: 12%;
+    }
+    .date{
+        background-color: transparent;
+        border: 0px;
+        border-bottom: 2px red solid;
+        font-size: 25px;
+        color: red;
+        
+    }
+}
+//img
+.img{
+    img{
+        width: 80%;
+        display: block;
+    }
+    .lodging{
+        @include button(left);
+        margin-top:8px
+    }
+    .packing{
+        @include button(left);
+        margin-top: 53px;
+        margin-left: -99px;
+    }
+    .notes{
+        @include button(left);
+        margin-top: 100px;
+        margin-left: -122px;
+    }
+    button:hover{
+        @include btnHover
+    }
+}
+// info
+.info{
+    .tripTo{
+        font-size: $fsize;
+        font-weight: $bold;
+        font-family: $font-family;
+    }
+    .Dparting{
+        font-size: $fsize;
+        font-weight: $bold;
+        font-family: $font-family;
+    }
+    .conurty{
+        font-size: $fsize;
+        font-weight: $bold;
+    }
+}
+
