@@ -6,17 +6,26 @@ const app = express()
 
 
 //the saved city search history
-let projectData = {};
-//object stored data
-let savedTrips = [];
+let ProjectData ={
+  projectweatherData : {},
+  projectimageData : {},
+  projectgeoData : {}
+}
 
+
+let savedData=[];
+
+ 
 app.use(cors());
+
 
 //body Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(express.json());
 
 
 
@@ -38,25 +47,53 @@ app.get('/test', function(req, res) {
 
 
 
-app.post('/saveData', (req, res) => {
-  
-    projectData['name'] = req.body.name;
-    projectData['CountryName'] = req.body.CountryName;
-    projectData['temp'] = req.body.temp;
-    projectData['feelTemp'] = req.body.feelTemp;
-    projectData['description'] = req.body.description
-    projectData['counterImg'] = req.body.counterImg;
+app.post('/saveimageData', (req, res) => {
+   console.log(req.body);
+  ProjectData.projectimageData.counterImg = req.body.data.preURL;
    
-    res.send(projectData);
+ //   res.send(projectimageData);
   });
+
+  app.post('/savegeoData', (req, res) => {
+    console.log(req.body);
+    ProjectData.projectgeoData.name = req.body.data.name;
+    ProjectData.projectgeoData.CountryName = req.body.data.CountryName;     
+   //   res.send(projectgeoData);
+    });
+
+
+    app.post('/saveweatherData', (req, res) => {
+      console.log(req.body);  
+      ProjectData.projectweatherData.temp = req.body.data.temp;
+      ProjectData.projectweatherData.feelTemp = req.body.data.feelTemp;
+      ProjectData.projectweatherData.description = req.body.data.description;
+       
+
+      //  res.send(projectweatherData);
+      });
+
+  
+ 
+
+
   app.get('/showData', (req, res) =>{
-    console.log(projectData);
-    res.send(projectData);
+    console.log(ProjectData);
+    res.send(ProjectData);
+    savedData[savedData.length]=ProjectData;
+    ProjectData={ projectweatherData : {},
+    projectimageData : {},
+    projectgeoData : {}
+  }
+   
+    
+  //  console.log(projectweatherData,projectgeoData,projectimageData);
+  //  res.send(projectweatherData,projectgeoData,projectimageData);
   });
 // designates what port the app will listen to for incoming requests
 app.listen(5051, function () {
     console.log('Example app listening on port 5051!')
 })
-app.get('/test', function (req, res) {
-  res.send("the server is working")
+app.get('/testdata', function (req, res) {
+  
+  res.json(ProjectData)
 })

@@ -1,7 +1,7 @@
 const btn = document.getElementById("btn");
 let url = `https://pixabay.com/api/?key=32618060-bd0271b93aa221540303c9942`
 
-const img = async (img) => {
+const image = async (img) => {
     const res = await fetch(`${url}&q=${img}&image_type=photo&pretty=true`)
     try{
         const data = await res.json();
@@ -10,7 +10,7 @@ const img = async (img) => {
         console.log('err' + err);
     }
 }
-
+/*
 
 // posting data to server
 const postData = async (url = '' , data = {} ) =>{
@@ -35,6 +35,7 @@ const postData = async (url = '' , data = {} ) =>{
 
 
 const getImg = () =>{
+    /*
     btn.addEventListener('click' , () =>{
         const county = document.getElementById("county").value;
         img(county)
@@ -47,7 +48,10 @@ const getImg = () =>{
             update();
         })
     })
-}
+    
+
+
+
 const update = async () => {
     const req = await fetch('http://localhost:5051/showData');
     try {
@@ -60,5 +64,5 @@ const update = async () => {
         console.log('error', err);
     }
 };
-
-export { getImg }
+*/
+export { image }

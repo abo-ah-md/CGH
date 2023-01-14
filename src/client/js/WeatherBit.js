@@ -5,18 +5,15 @@ let key = "f2eaac0dbc164806862600c24068e26e";
 const weather = async (city) => {
     const res = await fetch(`${url}${city}&key=${key}`)
     try{
-        const data = await res.json();
+        const weatherData = await res.json();
       
-        return data;
+        return weatherData;
     } catch (err){
         console.log('err' + err);
     }
-}
-// posting data to server
-
-const postData = async (url = '' , data = {} ) =>{
+/*
     
-    const res = await fetch(url , {
+    const weatherData = await fetch(url , {
         method: 'POST',
         credentials:'same-origin',
         headers:{
@@ -36,20 +33,53 @@ const postData = async (url = '' , data = {} ) =>{
     }
 }
 
+// posting data to server
+
+const postData = async (url = '' , data = {} ) =>{
+    
+    const res = await fetch(url , {
+        method: 'POST',
+        credentials:'same-origin',
+        headers:{
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            temp:data.temp,
+            feelTemp:data.feelTemp,
+            description:data.description
+        })
+    });
+    try{
+        const newData = await res.json();
+        console.log(newData);
+        return newData;
+    } catch (err){
+        console.log(err);
+    }
+}
+
 //
+
 const getWeather = () =>{
+    /*
     btn.addEventListener('click' , () =>{
         const county = document.getElementById("county").value;
         weather(county)
-        .then((data) =>{
+        .then((weatherData) =>{
             postData("http://localhost:5051/saveData" , {
-                temp: data.data[0].temp,
-                feelTemp: data.data[0].app_temp,
-                description:data.data[0].weather.description
+                temp: weatherData.data[0].temp,
+                feelTemp: weatherData.data[0].app_temp,
+                description:weatherData.data[0].weather.description
             })
         })
         .then(()=>{
-            const update = async () => {
+            update()
+        })
+    })
+    */
+}
+/*
+const update = async () => {
                 const req = await fetch('http://localhost:5051/showData');
                 try {
                     const getData = await req.json();
@@ -63,9 +93,5 @@ const getWeather = () =>{
                     console.log('error', err);
                 }
             };
-        })
-    })
-}
-
-
-export {getWeather};
+*/
+export {weather};
