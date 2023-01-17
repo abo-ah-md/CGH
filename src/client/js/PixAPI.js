@@ -10,59 +10,5 @@ const image = async (img) => {
         console.log('err' + err);
     }
 }
-/*
 
-// posting data to server
-const postData = async (url = '' , data = {} ) =>{
-    const res = await fetch(url , {
-        method: 'POST',
-        credentials:'same-origin',
-        headers:{
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            counterImg:data.preURL,
-        })
-    });
-    try{
-        const newData = await res.json();
-        return newData;
-    } catch (err){
-        console.log(err);
-    }
-}
-//
-
-
-const getImg = () =>{
-    /*
-    btn.addEventListener('click' , () =>{
-        const county = document.getElementById("county").value;
-        img(county)
-        .then((data) =>{
-            postData("http://localhost:5051/saveData" , {
-                preURL: data.hits[0].webformatURL
-            })
-        })
-        .then(()=>{
-            update();
-        })
-    })
-    
-
-
-
-const update = async () => {
-    const req = await fetch('http://localhost:5051/showData');
-    try {
-        const getData = await req.json();
-        // update new entry values
-        if (getData.counterImg !== undefined ) {
-            document.getElementById("img").src = getData.counterImg
-        }
-    } catch (err) {
-        console.log('error', err);
-    }
-};
-*/
 export { image }

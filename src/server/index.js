@@ -48,14 +48,14 @@ app.get('/test', function(req, res) {
 
 
 app.post('/saveimageData', (req, res) => {
-   console.log(req.body);
+  console.log(req.body.data);
   ProjectData.projectimageData.counterImg = req.body.data.preURL;
    
  //   res.send(projectimageData);
   });
 
   app.post('/savegeoData', (req, res) => {
-    console.log(req.body);
+    console.log(req.body.data);
     ProjectData.projectgeoData.name = req.body.data.name;
     ProjectData.projectgeoData.CountryName = req.body.data.CountryName;     
    //   res.send(projectgeoData);
@@ -63,7 +63,7 @@ app.post('/saveimageData', (req, res) => {
 
 
     app.post('/saveweatherData', (req, res) => {
-      console.log(req.body);  
+
       ProjectData.projectweatherData.temp = req.body.data.temp;
       ProjectData.projectweatherData.feelTemp = req.body.data.feelTemp;
       ProjectData.projectweatherData.description = req.body.data.description;
@@ -77,7 +77,7 @@ app.post('/saveimageData', (req, res) => {
 
 
   app.get('/showData', (req, res) =>{
-    console.log(ProjectData);
+    
     res.send(ProjectData);
     savedData[savedData.length]=ProjectData;
     ProjectData={ projectweatherData : {},

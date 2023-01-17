@@ -12,8 +12,9 @@ $font-family:Kalam,serif;
     font-weight: bold;
 }
 @mixin btnHover {
-    background-color: black;
-    color:white;
+    background-color: rgb(244, 237, 237);
+    color:rgb(232, 208, 72);
+    border: none;
     transition: 0.5s;
 }
 //gineral style
@@ -25,7 +26,8 @@ span{
 }
 // applyig styles
 body{
-    background-color: aliceblue;
+    background-color: rgb(218, 192, 156);
+    color: rgb(14, 13, 13);
 }
 //navbar
 nav{
@@ -91,7 +93,7 @@ nav{
     }
     .notes{
         @include button(left);
-        margin-top: 100px;
+        margin-top:100px;
         margin-left: -122px;
     }
     button:hover{
