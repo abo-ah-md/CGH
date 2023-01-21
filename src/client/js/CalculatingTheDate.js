@@ -1,26 +1,14 @@
-/*
-calculat the date from now to the data selected
-show date in page
-show the compunt
-*/
-//vars
-const btn = document.getElementById("btn");
-
-const calc = () => {
-  let expacted = document.getElementById("date").valueAsDate;
-  let nowDate = document.getElementById("date").value;
-  let date = new Date(expacted);
-  let date2 = new Date();
-  let difference = date.getTime() - date2.getTime();
-  let TotalDays = Math.ceil(difference / (1000 * 3600 * 24));
-  document.getElementById("counter").textContent = TotalDays;
-  document.getElementById("showDate").innerHTML = nowDate;
-};
-
-const Cal = () => {
-  btn.addEventListener("click", () => {
-    calc();
-  });
-};
-
-export { Cal };
+export const cal = async ()  =>  {
+  try{
+  let DepartingDate = await document.getElementById("DepartingDate").value;
+  let ReturnDate = await document.getElementById("ReturnDate").value;
+  console.log(DepartingDate);
+  console.log(ReturnDate);
+   document.getElementById("ShowDepartingDate").innerHTML= DepartingDate;
+   document.getElementById("ShowRetutnDate").innerHTML= ReturnDate;
+  }
+  catch(er){
+    console.log(er);
+  }
+ 
+}

@@ -1,78 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Project</title>
+    <title>Travel planner </title>
 </head>
+<br>
+<h1>Ttavel Planner</h1>
+<h2>your trip begins here</h2>
 
-<body>
-    <div class="c   ontainer">
-        <!--nav-->
-        <nav class="nav">
-            <h1 class="navH1"><span>t</span>ravel <span>p</span>lanner</h1>
-        </nav>
-        <!--nav-->
-        <!--add section-->
-        <div class="add">
-                <p>
-                    <span>p</span>lan <span>m</span>y <span>t</span>rip
-                    <button id="btn" onclick="Client.formHandler(),Client.Cal()">add trip</button>
-                </p>
-                <div>
-                    <h1 class="myTrip">
-                        <span>m</span>y trip to
-                        <input type="text" placeholder="enter the counrty" class="trip" id="county" name="name">
-                    </h1 >
-                        <h1 class="depart">
-                            <span>d</span>parting
-                            <input type="date" placeholder="date" class="date" id="date">
-                        </h1>
-                </div>
-        </div>
-        <!--add section-->
-        <!--Image section-->
-        <div class="img " id="Image">
-            <img src="/dist/media/world.png" alt="img" id="img" name="img"/>
-            <button class="lodging" onclick="alert('coming soon')">add lodging</button>
-            
-            <button class="packing" onclick="alert('coming soon')">add packing list</button>
-            
-            <button class="notes" onclick="alert('coming soon')">add notes</button>
-        </div>
-        <!--Image section-->
-        <!--info section-->
-        <div class="info " id="Info">
-                <div class="tripTo">
-                    <span>m</span>y trip to: <span id="name"></span> , <span id="Countyname" name="Cname"></span>
-                </div>
-            <div class="Dparting">
-                <span>d</span>parting  <span id="showDate"></span>  
+<input type="text" id="inputcity" placeholder="enter your distenation here">
+<br></br>
+Departing<input type="date" name="DepartingDate" id="DepartingDate">
+Returnning<input type="date" name="ReturnDate" id="ReturnDate">
+<button id="travelBtn" onclick=Client.formHandler()> lets go✈️ </button>
+<div id="showinfo">
+    <h3>you are going to :</h3>
+    <div class="cardBox">
+        <div id="card" class="hideCard">
+            <div class="city">
+                <h3><span id="city"></span>,<span id="country"></span></h3>
             </div>
-            <h2 class="font"><span>f</span>ight info</h2>
-            <p class="flight_details">
-                <span>ord</span> 3:00PM
-                <br />
-                <span>f</span>ight 22 udcity <span>air</span>
-                <br />
-                <span>ord</span> 3:00PM
-                <br />
-                <span>f</span>ight 44 udcity <span>air</span>
-            </p>
-            <p>
-            <div class="conurty" class="font">
-                <span id="counter"></span> days away
+            <div class="date">
+                <h3>DepartingDate <span id="ShowDepartingDate"></span></h3>
+                <h3>return date <span id="ShowRetutnDate"></span></h3>
             </div>
-            <h3 class="font"><span>t</span>ypcial weather for then</h3>
-            <p><span>t</span>emperature <p name="temp" id="temp"></p></p>
-            <p><span>f</span>eeling temperature <p name="feelTemp" id="feelTemp"></p></p>
-            <p><span>d</span>escription <p name="description" id="description">.</p></p>
-            </p>
+            <img src="/src/client/media/world.png" id="img" alt="">
+            <div class="weather">
+                <h4>its <span id="discribtion"></span> out there</h4>
+                <h4>with a temp of <span id="temp"> </span></h4>
+                <h4>it feels like <span id="feelsTemp"> </span></h4>
+
+            </div>
         </div>
-        <!--info section-->
     </div>
-   
+
+</div>
+
 </body>
 
 </html>

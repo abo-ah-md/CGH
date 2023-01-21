@@ -1,120 +1,47 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
-/*vars*/
-$fsize: 25px;
-$bold: bold;
-$font-family:Kalam,serif;
-/*Mix*/
-@mixin button ($dir) {
-    float: $dir;
-    padding: 9px;
-    background-color: transparent;
-    border-radius: 25px;
-    font-weight: bold;
-}
-@mixin btnHover {
-    background-color: rgb(244, 237, 237);
-    color:rgb(232, 208, 72);
-    border: none;
-    transition: 0.5s;
-}
-//gineral style
-span{
-    text-transform: capitalize;
-    }  
-.font{
-    font-family:Cardo,serif
-}
-// applyig styles
-body{
-    background-color: rgb(218, 192, 156);
-    color: rgb(14, 13, 13);
-}
-//navbar
-nav{
-    .navH1{
-        font-family:'Caveat', serif;
-        font-size: 55px;
-    }  
-}
-//navbar
-//add
-.add{
-    p{
-        font-size: 25px;
+$praimary: linear-gradient(
+  90deg,
+  rgba(2, 0, 36, 1) 0%,
+  rgba(94, 7, 75, 1) 21%,
+  rgba(91, 9, 121, 1) 48%,
+  rgba(9, 90, 119, 1) 76%,
+  rgba(0, 212, 255, 1) 100%
+);
+$Secondary: rgb(255, 255, 255);
+@media only screen and (max-width: 390px) {
+  body {
+    text-align: center;
+    background: $praimary;
+    background-repeat: no-repeat;
+    color: $Secondary;
+    .cardBox {
+      justify-content: center;
+      align-items: center;
     }
-    button{
-        @include button(right)
-    }
-    button:hover{
-        @include btnHover
-    }
-    .myTrip{
-        display: inline;
-        margin-left: 11%;
-        font-family: $font-family;
-    }
-    .depart{
-        float: right;
-        font-family: $font-family;
-        margin-right: 29%;
-        margin-top: 0%;
-    }
-    .trip{
-        background-color: transparent;
-        border: 0px;
-        border-left: 2px red solid;
-        font-size: 25px;
-        color: red;
-        width: 12%;
-    }
-    .date{
-        background-color: transparent;
-        border: 0px;
-        border-bottom: 2px red solid;
-        font-size: 25px;
-        color: red;
-        
-    }
-}
-//img
-.img{
-    img{
-        width: 80%;
-        display: block;
-    }
-    .lodging{
-        @include button(left);
-        margin-top:8px
-    }
-    .packing{
-        @include button(left);
-        margin-top: 53px;
-        margin-left: -99px;
-    }
-    .notes{
-        @include button(left);
-        margin-top:100px;
-        margin-left: -122px;
-    }
-    button:hover{
-        @include btnHover
-    }
-}
-// info
-.info{
-    .tripTo{
-        font-size: $fsize;
-        font-weight: $bold;
-        font-family: $font-family;
-    }
-    .Dparting{
-        font-size: $fsize;
-        font-weight: $bold;
-        font-family: $font-family;
-    }
-    .conurty{
-        font-size: $fsize;
-        font-weight: $bold;
-    }
-}
+    #card {
+      display: flex;
+      background-color: rgb(19, 9, 48);
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin: 5px;
+      border: 0.2rem solid rgb(245, 240, 240);
+      border-radius: 5%;
+      -webkit-border-radius: 5%;
+      -moz-border-radius: 5%;
+      -ms-border-radius: 5%;
+      -o-border-radius: 5%;
 
+      #img {
+        max-width: 85%;
+        border-radius: 5%;
+        -webkit-border-radius: 5%;
+        -moz-border-radius: 5%;
+        -ms-border-radius: 5%;
+        -o-border-radius: 5%;
+      }
+    }
+  }
+  .hideCard {
+    visibility: hidden;
+  }
+}

@@ -21,16 +21,3 @@ API
 -WeatherBit
 -pixabay
 [(Back to top)](#table-of-contents)
-
-
-
-# Contribute
-
-[(Back to top)](#table-of-contents)
-you are more than welcome to chime in and Contribute to this project
-
-# Footer
-
-[(Back to top)](#table-of-contents)
-
-![Footer](https://image.pngaaa.com/573/3752573-middle.png)

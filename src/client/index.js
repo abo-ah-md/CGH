@@ -1,19 +1,13 @@
 import img from "./media/world.png";
 
-//import API's  
-import{formHandler} from './js/formHandler'
-import { getCountyName,Geo } from './js/geoAPI'
-import { getWeather,weather } from './js/WeatherBit'
-import { image,getImg } from './js/pixAPI'
-import { Cal } from './js/CalculatingTheDate'
- // import all the styles all styles must bee scss
-import "./style/styles.scss"
-import "./style/mobile.scss"
+import { formHandler } from "./js/formHandler";
+import { cal } from "./js/CalculatingTheDate";
+import { update } from "./js/updateWebsite";
+import { Geo } from "./js/GeoAPI";
+import { weather } from "./js/WeatherAPI";
+import { Image } from "./js/imageAPI";
+// import all the styles all styles must bee scss
+import "./style/styles.scss";
+import "./style/mobile.scss";
 // export the functionlty
-export {
-    image,
-    Geo,
-    weather,
-    Cal,
-    formHandler
-}
+export { cal, Image, formHandler, update, Geo, weather };
