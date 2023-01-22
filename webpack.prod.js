@@ -1,12 +1,14 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const workbox_ServiceWorkers= require("workbox-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const LinkTypePlugin = require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
 const TerserPlugin = require('terser-webpack-plugin');
+
 module.exports = {
+    
     entry: './src/client/index.js',
     mode: 'production',
     optimization: {
@@ -35,8 +37,8 @@ module.exports = {
                     loader: 'file-loader',
                     options:{
                         name: '[name].[ext]',
-                        outputPath: 'media/',
-                        publicPath: 'media/'
+                        outputPath: '/src/client/media',
+                        publicPath: '/src/client/media'
                     }
                 }]
             }
@@ -58,7 +60,7 @@ module.exports = {
             
               NODE_ENV: JSON.stringify("production")}
             }),
-        new WorkboxPlugin.GenerateSW(),
+        new workbox_ServiceWorkers.GenerateSW(),
         new MiniCssExtractPlugin({ filename: "[name].css" }),
         
 

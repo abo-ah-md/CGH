@@ -18,8 +18,8 @@ module.exports = {
                     loader: 'file-loader',
                     options:{
                         name: '[name].[ext]',
-                        outputPath: 'media/',
-                        publicPath: 'media/'
+                        outputPath: '/src/client/media',
+                        publicPath: '/src/client/media'
                     }
                 }]
             },
