@@ -2,7 +2,7 @@
 export let weather = async (langtitude,latitdude) => {
     try {
       let url = "http://api.weatherbit.io/v2.0/current?";
-      let key = "f2eaac0dbc164806862600c24068e26e";
+      let key = "267f6d9c0f954735963a93de4b326522";
   
       const res = await fetch(`${url}&lat=${latitdude}&lon=${langtitude}&key=${key}`, {
         method: "GET",

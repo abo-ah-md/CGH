@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev":"nodemon src/server/index.js",
     "test": "jest test --env=jsdom",
     "start": "node src/server/index.js",
     "build-prod": "webpack --hot  --config webpack.prod.js",
@@ -16,6 +17,8 @@
     "babel-preset-es2015": "^6.24.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "nodemon": "^2.0.21",
+    "openai": "^3.2.1",
     "path": "^0.12.7",
     "process": "^0.11.10",
     "webpack": "^5.74.0",

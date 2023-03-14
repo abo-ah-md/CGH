@@ -1,8 +1,12 @@
-var path = require("path");
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
+const { Configuration, OpenAIApi } = require("openai");
+require("dotenv").config()
+const { response } = require("express");
+
 
 //the saved city search history
 let ProjectData = {
@@ -27,15 +31,53 @@ app.use(express.json());
 
 app.use(express.static("dist"));
 
+
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+
+
+
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
 
 // server test route
-app.get("/test", function (req, res) {
-  res.json({
-    status: 200,
-  });
+app.post  ("/test", async (req, res) => {
+  try{
+    const city= req.body.name
+    const days= req.body.days
+
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: ` plan to me a ${days} days visit to ${city} and make them timelined for each day like:  day 1 :make this and go to that  `, 
+      temperature: 0,
+      max_tokens: 1000,
+      top_p: 1,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+      stop: `[\n]`,
+    })
+    console.log(response.data.choices[0].text);
+    return res.status(200).json({
+      success:true,
+      data:response.data.choices[0].text
+    })
+  }catch(er){
+  return res.status(400).json({
+    success:false,
+    error:er.response
+    ? er.reponse.data
+    :"server error"
+  })  
+  }
+ 
+ 
+ 
+ 
 });
 
 app.post("/saveimageData", (req, res) => {
