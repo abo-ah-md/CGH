@@ -49,11 +49,12 @@ app.get("/", function (req, res) {
 app.post  ("/test", async (req, res) => {
   try{
     const city= req.body.name
-    const days= req.body.days
+    const fromDate= req.body.fromDate
+    const toDate= req.body.toDate
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: ` plan to me a ${days} days visit to ${city} and make them timelined for each day like:  day 1 :make this and go to that  `, 
+      prompt: ` plan a trip from  ${fromDate} to ${} days visit to ${city} and make them timelined for each day like:  day 1 :make this and go to that  `, 
       temperature: 0,
       max_tokens: 1000,
       top_p: 1,

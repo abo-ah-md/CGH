@@ -26,6 +26,9 @@ const formHandler = async () => {
 
     //displaying the fetched data
    await update();
+   const fromDate= document.getElementById("ShowDepartingDate").innerText
+   console.log();
+
 
    //showing the travel planning  card 
   let cardClass = document.getElementById("card")
