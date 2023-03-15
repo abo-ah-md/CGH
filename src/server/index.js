@@ -45,10 +45,12 @@ app.post("/test", async (req, res) => {
     const city = req.body.name;
     const fromDate = req.body.fromDate;
     const toDate = req.body.toDate;
+    const startTime = req.body.startTime;
+    const endTime = req.body.endTime;
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city} and make timeline for each day and show the distance between places to visit in the same day start each day from the hotel   like:  day 1 (date) : (exclude hotel) make this in time and go to that and the distance between them.put it in html tags`,
+      prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city} where my day start at ${startTime} and end at ${endTime} and make timeline for each day and show the distance between places to visit in the same day start each day from the hotel   like:  day 1 (date) :(Exclode hotel) make this in time and go to that and the distance between them.put it in html tags`,
       //prompt: ` plan a trip from  ${fromDate} to ${toDate} visit to ${city} and make them timelined for each day and show the distance between places to visit in the same day  like:  day 1 :make this and go to that  `,
       temperature: 0,
       max_tokens: 1000,
