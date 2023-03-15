@@ -4,9 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 const { Configuration, OpenAIApi } = require("openai");
-require("dotenv").config()
+require("dotenv").config();
 const { response } = require("express");
-
 
 //the saved city search history
 let ProjectData = {
@@ -31,54 +30,44 @@ app.use(express.json());
 
 app.use(express.static("dist"));
 
-
-
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-
-
-
 
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
 
 // server test route
-app.post  ("/test", async (req, res) => {
-  try{
-    const city= req.body.name
-    const fromDate= req.body.fromDate
-    const toDate= req.body.toDate
+app.post("/test", async (req, res) => {
+  try {
+    const city = req.body.name;
+    const fromDate = req.body.fromDate;
+    const toDate = req.body.toDate;
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: ` plan a trip from  ${fromDate} to ${toDate} visit to ${city} and make them timelined for each day and show the distance between places to visit in the same day  like:  day 1 :make this and go to that  `, 
+      prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city} and make timeline for each day and show the distance between places to visit in the same day start each day from the hotel   like:  day 1 (date) : (exclude hotel) make this in time and go to that and the distance between them.put it in html tags`,
+      //prompt: ` plan a trip from  ${fromDate} to ${toDate} visit to ${city} and make them timelined for each day and show the distance between places to visit in the same day  like:  day 1 :make this and go to that  `,
       temperature: 0,
       max_tokens: 1000,
       top_p: 1,
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
       stop: `[\n]`,
-    })
+    });
     console.log(response.data.choices[0].text);
     return res.status(200).json({
-      success:true,
-      data:response.data.choices[0].text
-    })
-  }catch(er){
-  return res.status(400).json({
-    success:false,
-    error:er.response
-    ? er.reponse.data
-    :"server error"
-  })  
+      success: true,
+      data: response.data.choices[0].text,
+    });
+  } catch (er) {
+    return res.status(400).json({
+      success: false,
+      error: er.response ? er.reponse.data : "server error",
+    });
   }
- 
- 
- 
- 
 });
 
 app.post("/saveimageData", (req, res) => {
