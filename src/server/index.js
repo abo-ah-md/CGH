@@ -6,6 +6,19 @@ const app = express();
 const { Configuration, OpenAIApi } = require("openai");
 require("dotenv").config();
 const { response } = require("express");
+const { google } = require('googleapis');
+
+
+const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
+const GOOGLE_PRIVATE_KEY="AIzaSyDIPDyjxSQRMcNtYR5zmaLNFhWP3bs8Mbw"
+const GOOGLE_CLIENT_EMAIL = "dalalfahadaa@gmail.com"
+const GOOGLE_PROJECT_NUMBER = "1031519192032"
+const GOOGLE_CALENDAR_ID = "dalalfahadaa@gmail.com"
+
+
+
+
+
 
 //the saved city search history
 let ProjectData = {
@@ -34,6 +47,41 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+
+app.get('/Calendar', (req, res) => {
+  const jwtClient = new google.auth.JWT(
+    GOOGLE_CLIENT_EMAIL,
+    null,
+    GOOGLE_PRIVATE_KEY,
+    SCOPES
+  );
+
+  const calendar = google.calendar({
+    version: 'v3',
+    project: GOOGLE_PROJECT_NUMBER,
+    auth: jwtClient
+  });
+
+  calendar.events.list({
+    calendarId: GOOGLE_CALENDAR_ID,
+    timeMin: (new Date()).toISOString(),
+    maxResults: 10,
+    singleEvents: true,
+    orderBy: 'startTime',
+  }, (error, result) => {
+    if (error) {
+      res.send(JSON.stringify({ error: error }));
+    } else {
+      if (result.data.items.length) {
+        res.send(JSON.stringify({ events: result.data.items }));
+      } else {
+        res.send(JSON.stringify({ message: 'No upcoming events found.' }));
+      }
+    }
+  });
+});
+
+
 
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
