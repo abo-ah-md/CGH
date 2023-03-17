@@ -41,29 +41,29 @@ app.get("/", function (req, res) {
 
 // server test route
 app.post("/test", async (req, res) => {
-
   try {
-    const city = req.body.name;
+    const city =req.body.name ;
     const fromDate = req.body.fromDate;
     const toDate = req.body.toDate;
     const startTime = req.body.startTime;
     const endTime = req.body.endTime;
-
-
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      //prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city} 
+      //prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city}
       //where my day start at ${startTime} and end at ${endTime} and make timeline for each day and show the distance between places to visit in the same day start each day from the hotel   like:  day 1 (date) :(Exclode hotel) make this in time and go to that and the distance between them.put it in html tags`,
       //prompt: ` plan a trip from  ${fromDate} to ${toDate} visit to ${city} and make them timelined for each day and show the distance between places to visit in the same day  like:  day 1 :make this and go to that  `,
       messages: [
         {
-          "role": "system",
-          "content": `you are a helpfull travel planner spicialized in planning trips in KSA  you always  consider to include saudi culture in your planning  `,
-          "role": "user",
-          "content": `plan a trip from  ${fromDate} to ${toDate}, to visit ${city},where my activities start at ${startTime} and end at ${endTime} ,and make timeline for each day and provide the time it takes to go from one place to the next place in your daily sechdule.put it in JSON format like your prevous 
+          role: "system",
+          content: `you are a helpfull travel planner spicialized in planning trips in KSA  you always  consider to include saudi culture in your planning  `,
+          role: "user",
+          content: `plan a trip from  ${fromDate} to ${toDate}, to visit ${city},where my activities start at ${startTime} and end at ${endTime} ,and make timeline for each day and provide the time it takes to go from one place to the next place in your daily sechdule and here are the weather info ${ProjectData.weatherDatabyday} please consider those data in your planing if they are relevant to the traviling dates and show them as the reason of choosing the activity .put it in JSON format like your prevous 
             
 {
   "2023-03-02": [
+     date:"2023-03-02"
+    "temp":"40°C"
+    "advaice about the weather": you should wear somthing , and pick outdoor activity 
     {
       "activity": "Arrive in Riyadh",
       "time": "00:00"
@@ -115,18 +115,17 @@ app.post("/test", async (req, res) => {
     }
   ]
 }`,
-
-        }
-      ]
-
+        },
+      ],
     });
-    const GPTResult = response.data.choices[0].message.content
+    const GPTResult = response.data.choices[0].message.content;
     console.log(GPTResult);
-    return res.status(200).send(GPTResult)
+    return res.status(200).json(GPTResult);
   } catch (er) {
-    console.log("***", er)
+    console.log("***", er);
     return res.status(400).json();
   }
+  
 });
 
 app.post("/saveimageData", (req, res) => {
@@ -147,16 +146,17 @@ app.post("/savegeoData", (req, res) => {
 
 app.post("/saveweatherData", (req, res) => {
   console.log(req.body);
-  ProjectData.projectweatherData.temp = req.body.temp;
-  ProjectData.projectweatherData.feelTemp = req.body.feelTemp;
-  ProjectData.projectweatherData.description = req.body.description;
+  ProjectData.projectweatherData = req.body.weatherDatabyday;
+
+  console.log(ProjectData.projectweatherData);
 
   res.send(ProjectData.projectweatherData).status(200);
 });
 
-app.get("/showData", (req, res) => {
+app.post("/showData", async (req, res) => {
   console.log("data is sent", ProjectData);
-  res.send(ProjectData).status(200);
+
+  
 });
 
 app.listen(5000, function () {
