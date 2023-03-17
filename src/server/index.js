@@ -41,6 +41,7 @@ app.get("/", function (req, res) {
 
 // server test route
 app.post("/test", async (req, res) => {
+
   try {
     const city = req.body.name;
     const fromDate = req.body.fromDate;
@@ -48,27 +49,83 @@ app.post("/test", async (req, res) => {
     const startTime = req.body.startTime;
     const endTime = req.body.endTime;
 
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city} where my day start at ${startTime} and end at ${endTime} and make timeline for each day and show the distance between places to visit in the same day start each day from the hotel   like:  day 1 (date) :(Exclode hotel) make this in time and go to that and the distance between them.put it in html tags`,
+
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      //prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city} 
+      //where my day start at ${startTime} and end at ${endTime} and make timeline for each day and show the distance between places to visit in the same day start each day from the hotel   like:  day 1 (date) :(Exclode hotel) make this in time and go to that and the distance between them.put it in html tags`,
       //prompt: ` plan a trip from  ${fromDate} to ${toDate} visit to ${city} and make them timelined for each day and show the distance between places to visit in the same day  like:  day 1 :make this and go to that  `,
-      temperature: 0,
-      max_tokens: 1000,
-      top_p: 1,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
-      stop: `[\n]`,
+      messages: [
+        {
+          "role": "system",
+          "content": `you are a helpfull travel planner spicialized in planning trips in KSA  you always  consider to include saudi culture in your planning  `,
+          "role": "user",
+          "content": `plan a trip from  ${fromDate} to ${toDate}, to visit ${city},where my activities start at ${startTime} and end at ${endTime} ,and make timeline for each day and provide the time it takes to go from one place to the next place in your daily sechdule.put it in JSON format like your prevous 
+            
+{
+  "2023-03-02": [
+    {
+      "activity": "Arrive in Riyadh",
+      "time": "00:00"
+    },
+    {
+      "activity": "Check-in at hotel",
+      "time": "00:30",
+      "duration": "00:30"
+    },
+    {
+      "activity": "Visit Masmak Fort",
+      "time": "10:00",
+      "duration": "02:00",
+      "travel": {
+        "from": "hotel",
+        "to": "Masmak Fort",
+        "duration": "00:15"
+      }
+    },
+    {
+      "activity": "Lunch at AlMamlakah Mall",
+      "time": "13:00",
+      "duration": "01:00",
+      "travel": {
+        "from": "Masmak Fort",
+        "to": "AlMamlakah Mall",
+        "duration": "00:30"
+      }
+    },
+    {
+      "activity": "Visit Kingdom Centre Tower",
+      "time": "15:00",
+      "duration": "02:00",
+      "travel": {
+        "from": "AlMamlakah Mall",
+        "to": "Kingdom Centre Tower",
+        "duration": "00:20"
+      }
+    },
+    {
+      "activity": "Dinner at Al Faisaliah Tower",
+      "time": "19:00",
+      "duration": "02:00",
+      "travel": {
+        "from": "Kingdom Centre Tower",
+        "to": "Al Faisaliah Tower",
+        "duration": "00:30"
+      }
+    }
+  ]
+}`,
+
+        }
+      ]
+
     });
-    console.log(response.data.choices[0].text);
-    return res.status(200).json({
-      success: true,
-      data: response.data.choices[0].text,
-    });
+    const GPTResult = response.data.choices[0].message.content
+    console.log(GPTResult);
+    return res.status(200).send(GPTResult)
   } catch (er) {
-    return res.status(400).json({
-      success: false,
-      error: er.response ? er.reponse.data : "server error",
-    });
+    console.log("***", er)
+    return res.status(400).json();
   }
 });
 
