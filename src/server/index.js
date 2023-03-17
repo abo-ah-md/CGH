@@ -5,18 +5,6 @@ const bodyParser = require("body-parser");
 const app = express();
 const { Configuration, OpenAIApi } = require("openai");
 require("dotenv").config();
-const { response } = require("express");
-const { google } = require('googleapis');
-
-
-const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
-const GOOGLE_PRIVATE_KEY="AIzaSyDIPDyjxSQRMcNtYR5zmaLNFhWP3bs8Mbw"
-const GOOGLE_CLIENT_EMAIL = "dalalfahadaa@gmail.com"
-const GOOGLE_PROJECT_NUMBER = "1031519192032"
-const GOOGLE_CALENDAR_ID = "dalalfahadaa@gmail.com"
-
-
-
 
 
 
@@ -48,39 +36,6 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-app.get('/Calendar', (req, res) => {
-  const jwtClient = new google.auth.JWT(
-    GOOGLE_CLIENT_EMAIL,
-    null,
-    GOOGLE_PRIVATE_KEY,
-    SCOPES
-  );
-
-  const calendar = google.calendar({
-    version: 'v3',
-    project: GOOGLE_PROJECT_NUMBER,
-    auth: jwtClient
-  });
-
-  calendar.events.list({
-    calendarId: GOOGLE_CALENDAR_ID,
-    timeMin: (new Date()).toISOString(),
-    maxResults: 10,
-    singleEvents: true,
-    orderBy: 'startTime',
-  }, (error, result) => {
-    if (error) {
-      res.send(JSON.stringify({ error: error }));
-    } else {
-      if (result.data.items.length) {
-        res.send(JSON.stringify({ events: result.data.items }));
-      } else {
-        res.send(JSON.stringify({ message: 'No upcoming events found.' }));
-      }
-    }
-  });
-});
-
 
 
 app.get("/", function (req, res) {
@@ -88,13 +43,9 @@ app.get("/", function (req, res) {
 });
 
 // server test route
-app.post("/test", async (req, res) => {
+app.get("/test", async (req, res) => {
+
   try {
-    const city =req.body.name ;
-    const fromDate = req.body.fromDate;
-    const toDate = req.body.toDate;
-    const startTime = req.body.startTime;
-    const endTime = req.body.endTime;
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
       //prompt: `plan a trip from  ${fromDate} to ${toDate} visit to ${city}
@@ -105,7 +56,7 @@ app.post("/test", async (req, res) => {
           role: "system",
           content: `you are a helpfull travel planner spicialized in planning trips in KSA  you always  consider to include saudi culture in your planning  `,
           role: "user",
-          content: `plan a trip from  ${fromDate} to ${toDate}, to visit ${city},where my activities start at ${startTime} and end at ${endTime} ,and make timeline for each day and provide the time it takes to go from one place to the next place in your daily sechdule and here are the weather info ${ProjectData.weatherDatabyday} please consider those data in your planing if they are relevant to the traviling dates and show them as the reason of choosing the activity .put it in JSON format like your prevous 
+          content: `plan a trip from  ${ProjectData.fromDate} to ${ProjectData.toDate}, to visit ${ProjectData.cityName},where my activities start at ${ProjectData.startTime} and end at ${ProjectData.endTime} ,and make timeline for each day and provide the time it takes to go from one place to the next place in your daily sechdule and here are the weather info ${ProjectData.weatherDatabyday} please consider those data in your planing if they are relevant to the traviling dates and show them as the reason of choosing the activity .put it in JSON format like your prevous 
             
 {
   "2023-03-02": [
@@ -176,24 +127,22 @@ app.post("/test", async (req, res) => {
   
 });
 
-app.post("/saveimageData", (req, res) => {
-  console.log(req.body);
-  ProjectData.projectimageData.counterImg = req.body.preURL;
-
-  res.send(ProjectData.projectimageData).status(200);
-});
-
 app.post("/savegeoData", (req, res) => {
   console.log(req.body);
   ProjectData.projectgeoData.latitude = req.body.latitude;
   ProjectData.projectgeoData.langtitude = req.body.langtitude;
-  ProjectData.projectgeoData.cityName = req.body.cityName;
+  ProjectData.cityName = req.body.cityName;
   ProjectData.projectgeoData.CuntryName = req.body.CuntryName;
-  res.send(ProjectData.projectgeoData).status(200);
+  ProjectData.fromDate= req.body.fromDate;
+  ProjectData.toDate= req.body.toDate;
+  ProjectData.startTime= req.body.startTime;
+  ProjectData.endTime= req.body.endTime;
+ 
+    res.send(ProjectData.projectgeoData).status(200);
 });
 
 app.post("/saveweatherData", (req, res) => {
-  console.log(req.body);
+  console.log("weather",req.body);
   ProjectData.projectweatherData = req.body.weatherDatabyday;
 
   console.log(ProjectData.projectweatherData);
@@ -201,7 +150,7 @@ app.post("/saveweatherData", (req, res) => {
   res.send(ProjectData.projectweatherData).status(200);
 });
 
-app.post("/showData", async (req, res) => {
+app.get("/showData", async (req, res) => {
   console.log("data is sent", ProjectData);
 
   
