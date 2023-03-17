@@ -64,6 +64,18 @@ const formHandler = async () => {
           }
         );
         const weatherData = await res.json();
+        console.log(weatherData);
+        let weatherDatabyday=[]
+      weatherData.data.forEach(element => {
+        //  console.log(element.data[0].weather.description);
+           let data2 = {
+            "description":element.weather.description,
+            "datetime":element.datetime,
+            "temp":element.temp,
+          }
+          weatherDatabyday.push(data2);
+        });
+        
 
         fetch("http://localhost:5000/saveweatherData", {
           method: "POST",
@@ -72,13 +84,11 @@ const formHandler = async () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            temp: weatherData.data[0].temp,
-            feelTemp: weatherData.data[0].app_temp,
-            description: weatherData.data[0].weather.description,
+            weatherDatabyday,
           }),
         });
 
-        return await weatherData;
+        return  weatherDatabyday;
       } catch (er) {
         console.log(er);
       }

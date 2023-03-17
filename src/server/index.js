@@ -142,10 +142,8 @@ app.post("/savegeoData", (req, res) => {
 });
 
 app.post("/saveweatherData", (req, res) => {
-  console.log("weather",req.body);
+  console.log(req.body);
   ProjectData.projectweatherData = req.body.weatherDatabyday;
-
-  console.log(ProjectData.projectweatherData);
 
   res.send(ProjectData.projectweatherData).status(200);
 });
