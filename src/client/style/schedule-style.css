@@ -1,0 +1,71 @@
+:root{
+  --secondary-dark: #9a9a9a;
+  --secondary-light: #B5B5B5;
+}
+.output-header{
+  min-width: 60vw;
+  height: 60vh;
+  left: 0px;
+  top: -9px;
+  background: linear-gradient(181.31deg, rgba(210, 94, 122, 0.29) -26.01%, rgba(244, 244, 244, 0) 98.88%);
+}
+.inputs-card{
+  width: 80%;
+  background: #FFFFFF;
+  box-shadow: 5px 5px 20px rgba(124, 124, 124, 0.2);
+  border-radius: 20px !important;
+  border-width: 0px !important;
+}
+.input-group-append {
+  cursor: pointer;
+}
+.inputs-section label{
+  width: 100%;
+  direction: rtl;
+}
+.form-floating > .bi-calendar-date + .datepicker_input + label {
+  padding-left: 3.5rem;
+  z-index: 3;
+}
+.action-btn{
+  background: linear-gradient(270deg, #A071B8 0%, #D45D77 100%);
+  border-radius: 200px !important;
+  color: white !important;
+  padding: 8px 30px !important;
+}
+.output-card{
+  width: 80%;
+  background: #FFFFFF;
+  box-shadow: 5px 5px 20px rgba(124, 124, 124, 0.2);
+  border-radius: 20px !important;
+  border-width: 0px !important;
+}
+.output-card-header .date{
+  color: var(--secondary-light);
+}
+.plan-card{
+  background-color: #d45d7726;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+.plan-card div{
+  text-align: right;
+}
+.plan-card-dot{
+  width: 20px;
+  height: 20px;
+  background-color: #151018;
+  border-radius: 10000px;
+}
+.plan-card .category{
+  font-size: 1.1rem;
+  /* font-weight: 700; */
+}
+.plan-card .time{
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+.plan-card .destination-name{
+  font-size: 1.3rem;
+  font-weight: 700;
+}
