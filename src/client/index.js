@@ -1,4 +1,3 @@
-
 import { formHandler } from "./js/formHandler";
 // import all the styles all styles must bee scss
 import "./style/styles.scss";
