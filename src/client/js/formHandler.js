@@ -5,9 +5,9 @@ fetch the weather data  sending it to server
  page and showing the card */
 const formHandler = async () => {
   // getting the User input
-  const inputcity = document.getElementById("inputcity").value;
-  const fromDate = document.getElementById("DepartingDate").value;
-  const toDate = document.getElementById("ReturnDate").value;
+  const inputcity = document.getElementById("city").value;
+  const fromDate = document.getElementById("arrival-date").value;
+  const toDate = document.getElementById("leave-date").value;
   const startTime = document.getElementById("startTime").value;
   const endTime = document.getElementById("endTime").value;
 
@@ -108,9 +108,15 @@ const formHandler = async () => {
         });
         const getData = await res.json();
         console.log(getData);
+document.getElementById().innerText=
+        
+
       } catch (err) {
         console.log("error", err);
       }
+
+
+
     };
 
     await update();

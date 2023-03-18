@@ -403,18 +403,6 @@ body {
       <form>
         <div class="row align-self-center justify-content-center">
           <div class="col mb-3">
-            <label for="exampleInputEmail1" class="form-label">الدولة</label>
-            <select class="form-select" name="country" id="pet-select">
-              <option disabled selected value></option>
-              <option value="SaudiArabia">السعودية</option>
-                <option value="UnitedArabEmirates">الإمارات</option>
-                <option value="Qatar">قطر</option>
-                <option value="Kuwait">الكويت</option>
-                <option value="Oman">عمان</option>
-                <option value="Yemen">اليمن</option>
-                <option value="Bahrain">البحرين</option>
-            </select>          
-          </div>
           <div class="col mb-3">
             <label for="exampleInputPassword1" class="form-label">المدينة</label>
             <select class="form-select" name="city">
@@ -432,26 +420,37 @@ body {
             <label for="exampleInputPassword1" class="form-label">تاريخ الوصول</label>
             <div class="input-group date" id="datepicker-1">
               <input type="text" class="form-control" id="date"/>
-              <span class="input-group-append">
+              <!-- <span class="input-group-append">
               <span class="input-group-text bg-light d-block">
                 <i class="fa fa-calendar"></i>
               </span>
-              </span>
+              </span> -->
             </div>
           </div>
           <div class="col mb-3">
             <label for="exampleInputPassword1" class="form-label">تاريخ المغادرة</label>
             <div class="input-group date" id="datepicker-2">
               <input type="text" class="form-control" id="date"/>
-              <span class="input-group-append">
+              <!-- <span class="input-group-append">
               <span class="input-group-text bg-light d-block">
                 <i class="fa fa-calendar"></i>
               </span>
+              </span> -->
+            </div>          
+          </div>
+          <div class="col mb-3">
+            <label for="exampleInputPassword1" class="form-label">وقت البداية</label>
+            <div class="input-group date" id="datepicker-2">
+              <input type="text" class="form-control" id="date"/>
+              <!-- <span class="input-group-append">
+              <span class="input-group-text bg-light d-block">
+                <i class="fa fa-calendar"></i>
               </span>
+              </span> -->
             </div>          
           </div>
           <div class="col d-flex align-self-center justify-content-center">
-            <button type="submit" class="btn action-btn">جدوِل الرحلة</button>
+            <button onclick=Client.formHandler() type="submit" class="btn action-btn">و</button>
           </div>
         </div>
       </form>
