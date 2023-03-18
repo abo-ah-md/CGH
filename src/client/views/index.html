@@ -1,56 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel planner </title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <title>رحالة | يخطط رحلاتك</title>
 </head>
-<br>
-<h1>Ttavel Planner</h1>
-<h2>your trip begins here</h2>
+<body>
+  <div class="wrapper">
+    <nav class="navbar navbar-expand-lg">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse mx-auto" id="navbarNav">
+        <ul class="navbar-nav ms-auto me-4">
 
-<input type="text" id="inputcity" placeholder="enter your distenation here">
-<br></br>
-Departing<input type="date" name="DepartingDate" id="DepartingDate">
-Returnning<input type="date" name="ReturnDate" id="ReturnDate"> <br/>
-<input id="startTime" type="time" name="startTime" required /><br />
-      <label>end:</label>
-      <input id="endTime" type="time" name="endTime" required /><br />
-<button id="travelBtn" onclick=Client.formHandler()> lets go✈️ </button>
-<div id="showinfo">
-    <h3>you are going to :</h3>
-    <div class="cardBox">
-        <div id="card" class="hideCard">
-            <div class="city">
-                <h3><span id="city"></span>,<span id="country"></span></h3>
-            </div>
-            <div class="date">
-                <h3>DepartingDate <span id="ShowDepartingDate"></span></h3>
-                <h3>return date <span id="ShowRetutnDate"></span></h3>
-            </div>
-            <img src="/src/client/media/world.png" id="img" alt="">
-            <div class="weather">
-                <h4>its <span id="discribtion"></span> out there</h4>
-                <h4>with a temp of <span id="temp"> </span></h4>
-                <h4>it feels like <span id="feelsTemp"> </span></h4>
-
-            </div>
+            <li class="nav-item">
+              <a class="nav-link" href="#">تواصل معنا</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">عن رحالة</a>
+            </li>  
+            <li class="nav-item active">
+              <a class="nav-link" href="#">من نحن</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">الرئيسية</a>
+            </li>
+        </ul>
+        <a class="navbar-brand" href="#"><img src="resouces/images/Logo.png" alt=""></a>
+      </div>
+    </nav>
+    <div class="hero hero-100 d-flex flex-column align-items-center justify-content-center">
+      <div class="d-flex w-75"></span>
+        <div class="d-flex flex-column align-items-end me-1">
+          <h1 data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="200"><span class="highlight">رحّالة</span> يخطط رحلتك</h1>
+          <p class="mt-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">موقع يخطط لك رحلتك المثالية، حدد بداية يومك ونهايته في المدينة التي تفضلها، وسيزودك بجدول مفصل لرحلتك بناءً على تفضيلاتك.</p>
+          <a href="" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><div class="call-to-action d-flex align-items-center justify-content-center text-white mt-4">جدوِل رحلتك</div></a>
         </div>
+        <div class="d-flex">
+          <div class="hero-image-2 position-relative" data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="300"></div>
+          <div class="hero-image-1 position-relative" data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="400"></div>
+        </div>
+      </div>        
     </div>
-
-</div>
-<script>
-    // Check that service workers are supported
-    if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js');
-        });
+  </div>
+  <div class="process-section section container d-grid align-items-center">
+    <div class="row align-items-center justify-content-center text-center">
+      <h2 data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="200">جدوِل رحلتك المثالية</h2>
+    </div>
+    <div id="process-content" class="d-flex mx-5 align-items-center justify-content-center flex-wrap">
+      <div class="process-card d-flex flex-column align-items-center justify-content-center" style="margin-top: -2px;">
+        <span id="process-1" class="dot mb-4 d-flex align-items-center justify-content-center">
+          <i class="fas fa-globe-americas"></i>
+        </span>
+        <h4 class="mb-3">حدد معلومات رحلتك</h4>
+        <p class="process-text">اختر المدينة، الوقت، وتاريخ بداية الرحلة. </p>
+      </div>
+      <div class="process-card d-flex flex-column align-items-center justify-content-center" style="margin-top: 100px;">
+        <span id="process-2" class="dot mb-4 d-flex align-items-center justify-content-center mx-1">
+          <i class="fas fa-map-marked-alt"></i>
+        </span>
+        <h4 class="mb-3">استعرض خطة رحلتك</h4>
+        <p class="process-text">سيزودك رحالة بالخطة المناسبة حسب تفضيلاتك</p>
+      </div>
+      <div  class="process-card d-flex flex-column align-items-center justify-content-center" style="margin-top: -10px;">
+        <span id="process-3" class="dot mb-4 d-flex align-items-center justify-content-center">
+          <i class="fas fa-calendar-alt"></i>
+        </span>
+        <h4 class="mb-3">أضف الخطة إلى تقويمك</h4>     
+        <p class="process-text">يسهل عليك الرجوع إليها في أي مكان وزمان.</p>
+      </div> 
+    </div>
+  </div>
+  <div class="features-section section container d-grid">
+      <div class="row align-items-center justify-content-center text-center" data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="200">
+        <h2>ما يمــيزنا</h2>
+      </div>
+      <div class="features-content text-end">
+        <div class="row">
+          <div class="feature-content-col col-sm mx-4 d-flex align-items-center justify-content-end" data-aos="fade-right" data-aos-duration="1000"  data-aos-delay="200">
+            <div class="">
+              <h4>استكشف أماكن جديدة في السعودية</h4>
+              <p class="text-card">
+                اقتراحات لمطاعم، منتجعات، حدائق، ،مقاهي جديدة.
+              </p>
+            </div>
+          </div>
+          <div class="col-sm mx-3" data-aos="fade-left" data-aos-duration="1000"  data-aos-delay="200">
+            <div class="feature-card d-flex mx-auto justify-content-end">
+              <div class="feature-card-content text-start my-auto me-auto ms-5">
+                <div class="">
+                  <h6 class="feature-card-title">العلا</h6>
+                  <p class="feature-card-text">مدينة تتميز بجمال طبيعي رائع وتراث ثقافي غني. </p>
+                </div>
+              </div>
+              <div class="round mx-3 d-flex justify-content-center align-items-center my-auto">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row feature-left flex-wrap-reverse">
+          <div class="col-sm" data-aos="fade-left" data-aos-duration="1000"  data-aos-delay="200">
+            <div class="feature-card feature-card-left d-flex justify-content-center align-content-center">
+              <div class="feature-card-content text-start my-auto me-auto ms-5">
+                <div class="d-flex flex-column">
+                  <h6 class="feature-card-title"> Google Calendar أضف إلى  </h6>
+                </div>
+              </div>
+              <div class="round mx-3 d-flex justify-content-center align-items-center my-auto">
+                <img src="resouces/images/google_calendar.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="feature-content-col col-sm text-start mx-auto justify-content-end" data-aos="fade-right" data-aos-duration="1000"  data-aos-delay="200">
+            <div class=" feature-content">
+              <h4>احفظ خطتك على تقويمك</h4>
+              <p class="text-card">
+                ارجع إلى خطتك بسرعة وسهولة.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="feature-content-col col-sm mx-4 d-flex align-items-center justify-content-end" data-aos="fade-right" data-aos-duration="1000"  data-aos-delay="200">
+            <div>
+              <h4>خطط وجهتك بناءً على الطقس</h4>
+              <p class="text-card">
+                احصل على خطة مثالية لجميع الظروف.
+              </p>
+            </div>
+          </div>
+          <div class="col-sm mx-3" data-aos="fade-left" data-aos-duration="1000"  data-aos-delay="200">
+            <div class="feature-card d-flex mx-auto justify-content-end">
+              <div class="feature-card-content text-start my-auto me-auto ms-5">
+                <div class="">
+                  <h6 class="feature-card-title">27°</h6>
+                  <p class="feature-card-text">درجة الحرارة وقت رحلتك</p>
+                </div>
+              </div>
+              <div class="round mx-3 d-flex justify-content-center align-items-center my-auto">
+                <i class="fas fa-cloud-sun"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="team-section section container d-grid">
+    <div class="row align-items-center justify-content-center text-center" data-aos="fade-up" data-aos-duration="1000"  data-aos-delay="200">
+      <h2>تعرف علينا</h2>
+    </div>
+    <div class="team-content text-end">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="cards-wrapper">
+              <div class="team-member text-center">
+                <div class="team-img">
+                  <img src="resouces/images/abdullah.JPG" alt="">
+                </div>
+                <h6 class="team-title">عبدالله الشبل</h6>
+                <span>مطور الواجهات الخلفية</span>
+              </div>
+              <div class="team-member text-center mx-3">
+                <div class="team-img">
+                  <img src="resouces/images/fai.JPG" alt="">
+                </div>
+                <h6 class="team-title">في آل سنيد</h6>
+                <span>محللة أعمال</span>
+              </div>
+              <div class="team-member text-center mx-3">
+                <div class="team-img">
+                  <img src="resouces/images/zaid.JPG" alt="">
+                </div>
+                <h6 class="team-title">زيد الشريف</h6>
+                <span>مطور الواجهات الخلفية</span>
+              </div>
+            </div>          
+          </div>
+          <div class="carousel-item">
+            <div class="cards-wrapper">
+              <div class="team-member text-center">
+                <div class="team-img">
+                  <img src="resouces/images/marwah.JPG" alt="">
+                </div>
+                <h6 class="team-title">مروة الغامدي</h6>
+                <span>UX/UI مصممة</span>
+              </div>
+              <div class="team-member text-center mx-3">
+                <div class="team-img">
+                  <img src="resouces/images/rana.JPG" alt="">
+                </div>
+                <h6 class="team-title">رنا الدوسري</h6>
+                <span>مطورة الواجهات الأمامية</span>
+              </div>
+              <div class="team-member text-center mx-3">
+                <div class="team-img">
+                  <img src="resouces/images/fai.JPG" alt="">
+                </div>
+                <h6 class="team-title">دلال القحطاني</h6>
+                <span>مطورة الواجهات الأمامية</span>
+              </div>
+            </div>          
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+    <section class="footer d-flex justify-content-between p-4">
+      <div>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="text-white me-4">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <div class="me-5">
+        <span>تابعنا على وسائل التواصل الاجتماعي</span>
+      </div>
+    </section>
+    <section class="copyrights">
+      <div class="text-white text-center py-1">2023 @ جميع الحقوق محفوظة لفريق رحّالة</div>
+    </section>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leader-line/1.0.3/leader-line.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    let line1 = new LeaderLine(
+    document.getElementById('process-1'),
+    document.getElementById('process-2'),
+    {dash: {animation: true, gap: 5},
+      color: '#dedede',
+      outline: false,
+      endPlugOutline: false,
+      endPlugSize: 0.8,
+      size:2
     }
-   </script>
+    );
+    line1.startSocketGravity = 150;
 
+    let line2 = new LeaderLine(
+      document.getElementById('process-2'),
+      document.getElementById('process-3'),
+      {dash: {animation: true, gap: 5},
+        color: '#dedede',
+        outline: false,
+        endPlugOutline: false,
+        endPlugSize: 0.8,
+        size:2
+      }
+    );
+  </script>
 </body>
 
+  
 </html>
