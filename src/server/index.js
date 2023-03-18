@@ -56,7 +56,7 @@ app.get("/test", async (req, res) => {
           role: "system",
           content: `you are a helpfull travel planner spicialized in planning trips in KSA  you always  consider to include saudi culture in your planning  `,
           role: "user",
-          content: `plan a trip from  ${ProjectData.fromDate} to ${ProjectData.toDate}, to visit ${ProjectData.cityName},where my activities start at ${ProjectData.startTime} and end at ${ProjectData.endTime} ,and make timeline for each day and provide the time it takes to go from one place to the next place in your daily sechdule and here are the weather info ${ProjectData.weatherDatabyday} please consider those data in your planing if they are relevant to the traviling dates and show them as the reason of choosing the activity .put it in JSON format like your prevous 
+          content: `plan a trip from  2023-03-02 to 2023-03-05, to visit Riyadh ,where my activities start at 04:00 and end at 22:00 ,and make timeline for each day and provide the time it takes to go from one place to the next place in your daily sechdule and here are the weather info ${ProjectData.weatherDatabyday} please consider those data in your planing if they are relevant to the traviling dates and show them as the reason of choosing the activity .put it in JSON format like your prevous 
             
 {
   "2023-03-02": [

@@ -419,7 +419,7 @@ body {
           <div class="col mb-3">
             <label for="exampleInputPassword1" class="form-label">تاريخ الوصول</label>
             <div class="input-group date" id="datepicker-1">
-              <input type="text" class="form-control" id="date"/>
+              <input type="text" class="form-control" id="start-date"/>
               <!-- <span class="input-group-append">
               <span class="input-group-text bg-light d-block">
                 <i class="fa fa-calendar"></i>
@@ -430,7 +430,7 @@ body {
           <div class="col mb-3">
             <label for="exampleInputPassword1" class="form-label">تاريخ المغادرة</label>
             <div class="input-group date" id="datepicker-2">
-              <input type="text" class="form-control" id="date"/>
+              <input type="text" class="form-control" id="end-date"/>
               <!-- <span class="input-group-append">
               <span class="input-group-text bg-light d-block">
                 <i class="fa fa-calendar"></i>
@@ -441,7 +441,18 @@ body {
           <div class="col mb-3">
             <label for="exampleInputPassword1" class="form-label">وقت البداية</label>
             <div class="input-group date" id="datepicker-2">
-              <input type="text" class="form-control" id="date"/>
+              <input type="text" class="form-control" id="start-time"/>
+              <!-- <span class="input-group-append">
+              <span class="input-group-text bg-light d-block">
+                <i class="fa fa-calendar"></i>
+              </span>
+              </span> -->
+            </div>          
+          </div>
+          <div class="col mb-3">
+            <label for="exampleInputPassword1" class="form-label">وقت النهاية</label>
+            <div class="input-group date" id="datepicker-2">
+              <input type="text" class="form-control" id="end-time"/>
               <!-- <span class="input-group-append">
               <span class="input-group-text bg-light d-block">
                 <i class="fa fa-calendar"></i>
@@ -450,7 +461,7 @@ body {
             </div>          
           </div>
           <div class="col d-flex align-self-center justify-content-center">
-            <button onclick=Client.formHandler() type="submit" class="btn action-btn">و</button>
+            <button onclick=Client.formHandler() type="submit" class="btn action-btn">جدول</button>
           </div>
         </div>
       </form>
@@ -549,12 +560,12 @@ body {
     AOS.init();
   </script>
   <script>
-	$(function(){
-		$('#datepicker-1').datepicker();
-	});
-  $(function(){
-		$('#datepicker-2').datepicker();
-	});
+	// $(function(){
+	// 	$('#datepicker-1').datepicker();
+	// });
+  // $(function(){
+	// 	$('#datepicker-2').datepicker();
+	// });
   </script>
   <script>
     flat

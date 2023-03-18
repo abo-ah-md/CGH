@@ -8,8 +8,8 @@ const formHandler = async () => {
   const inputcity = document.getElementById("city").value;
   const fromDate = document.getElementById("arrival-date").value;
   const toDate = document.getElementById("leave-date").value;
-  const startTime = document.getElementById("startTime").value;
-  const endTime = document.getElementById("endTime").value;
+  const startTime = document.getElementById("start-time").value;
+  const endTime = document.getElementById("end-time").value;
 
   //taking the dates
   try {
@@ -108,8 +108,20 @@ const formHandler = async () => {
         });
         const getData = await res.json();
         console.log(getData);
-document.getElementById().innerText=
-        
+
+        // document.getElementById("").innerText = ;
+        let days = document.getElementsByClassName("output-card");
+        for (let k = 0; k < days.length; k++) {
+          let day = cards[k];
+          day.querySelector(".day") = k; 
+          let cards = document.getElementsByClassName("plan-card");
+          for (let i = 0; i < cards.length; i++) {
+            let card = cards[i][k];
+            card.querySelector(".category") = getData[k][i].duration; 
+            card.querySelector(".time") = getData[k][i].time; 
+            card.querySelector(".destination-name") = getData[k][i].activity; 
+          }
+        }
 
       } catch (err) {
         console.log("error", err);
