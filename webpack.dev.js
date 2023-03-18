@@ -45,6 +45,13 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
+        new HtmlWebPackPlugin({
+            template: "./src/client/views/schedule.html",
+            filename: "./schedule.html",
+        }),
+
+
+
         new CleanWebpackPlugin({
         
             dry: true,
